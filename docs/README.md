@@ -14,14 +14,15 @@ Main functionalities for Boxfield are:
 ### Architecture
 Boxfield will be seperated out into a few files.
 
-`boxfield.js` will be the entry file for the game
-`game.js` handles all of the game logic (game start, game end)
-`gameView.js` takes `Field.js`, `Obstacle.js`, and `Player.js` and renders them onto the screen
-`Field.js` contains information about the current level (player location, num obstacles)
-`MovingObject.js` will contain basic top level properties for the moving objects (obstacle and player)
-`Obstacle.js` inherits from MovingObject
-`Player.js` inherits from MovingObject
-`util.js` contains helper methods
+- `boxfield.js` will be the entry file for the game
+- `game.js` handles all of the game logic (game start, game end)
+- `gameView.js` takes `Field.js`, `Obstacle.js`, and `Player.js` and renders them onto the screen
+- `Field.js` contains information about the current level (player location, num obstacles)
+- `MovingObject.js` will contain basic top level properties for the moving objects
+(obstacle and player)
+- `Obstacle.js` inherits from MovingObject
+- `Player.js` inherits from MovingObject
+- `util.js` contains helper methods
 
 ### Wireframes
 <img src="https://raw.githubusercontent.com/jinchen93/boxfield/master/docs/boxfield-wireframe.png?token=APTthjTj506aIk42vULJNQZ3-ry76UHuks5ZNGpCwA%3D%3D">
