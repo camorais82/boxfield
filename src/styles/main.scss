@@ -4,6 +4,31 @@ html, body {
   overflow: hidden;
 }
 
+header {
+  position: fixed;
+  top: 2%;
+  width: 100%;
+  font-weight: 100;
+  font-family: 'Bungee Shade', cursive;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  letter-spacing: 10px;
+  color: #84e0e9;
+  z-index: 3;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #field {
-  background-color: black;
+  z-index: 1;
+  background-color: #000;
+}
+
+#objects {
+  z-index: 2;
 }
