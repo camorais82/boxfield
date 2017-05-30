@@ -1,3 +1,9 @@
-body {
-  background: black;
+@import "./reset.scss";
+
+html, body {
+  overflow: hidden;
+}
+
+canvas {
+  background-color: black;
 }
