@@ -66,8 +66,30 @@ const Draw = {
     ctx.fill();
   },
 
-  drawField: ctx => {
+  drawField: (ctx, offset) => {
+    const levels  = [];
+    let multiplier = 1.1;
 
+    let baseLevel = Utils.height / 10 + offset;
+
+    levels.push(baseLevel - offset);
+
+    for (let i = 1; i < 28; i++) {
+      levels.push(baseLevel);
+      baseLevel = baseLevel * multiplier;
+    }
+
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#24585D";
+    ctx.lineJoin = "round";
+    levels.forEach( level => Draw.drawFieldLine(ctx, level));
+    ctx.stroke();
+  },
+
+  drawFieldLine: (ctx, y) => {
+    ctx.moveTo(0, y);
+    ctx.lineTo(Utils.width, y);
   }
 };
 
