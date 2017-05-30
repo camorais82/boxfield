@@ -4,50 +4,50 @@ const Draw = require("./draw");
 
 const DEFAULT_LEFT_SQUARES = [
   {
-    x: 300,
+    x: Math.random() * Utils.width / 2,
     y: 50,
     size: 30,
     offset: 5,
-    xGrow: -4,
-    yGrow: 1.02,
-    sizeGrow: 1.020,
-    offsetGrow: 1.020,
+    xGrow: -(Utils.height / Utils.width / 2),
+    yGrow: 1.01,
+    sizeGrow: 1.0075,
+    offsetGrow: 1.0075,
     spawnOffset: 50,
   },
   {
-    x: 500,
+    x: Math.random() * Utils.width / 2,
     y: 50,
     size: 30,
     offset: 5,
-    xGrow: -4,
-    yGrow: 1.02,
-    sizeGrow: 1.020,
-    offsetGrow: 1.020,
+    xGrow: -(Utils.height / Utils.width / 2),
+    yGrow: 1.01,
+    sizeGrow: 1.0075,
+    offsetGrow: 1.0075,
     spawnOffset: 10,
   },
 ];
 
 const DEFAULT_RIGHT_SQUARES = [
   {
-    x: 800,
+    x: (Math.random() * Utils.width / 2) + Utils.width / 2,
     y: 50,
     size: 30,
     offset: 5,
-    xGrow: 4,
-    yGrow: 1.02,
-    sizeGrow: 1.020,
-    offsetGrow: 1.020,
+    xGrow: -(Utils.height / Utils.width / 2),
+    yGrow: 1.01,
+    sizeGrow: 1.0075,
+    offsetGrow: 1.0075,
     spawnOffset: 20,
   },
   {
-    x: 900,
+    x: (Math.random() * Utils.width / 2) + Utils.width / 2,
     y: 50,
     size: 30,
     offset: 5,
-    xGrow: 4,
-    yGrow: 1.02,
-    sizeGrow: 1.020,
-    offsetGrow: 1.020,
+    xGrow: -(Utils.height / Utils.width / 2),
+    yGrow: 1.01,
+    sizeGrow: 1.0075,
+    offsetGrow: 1.0075,
     spawnOffset: 10,
   },
 ];
@@ -71,12 +71,11 @@ class Obstacle {
   }
 
   animate() {
-    setInterval(() => {
-      this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      Draw.drawPlayer(this.ctx);
-      this.stepLeftSquares();
-      this.stepRightSquares();
-    }, 40);
+    window.requestAnimationFrame(() => this.animate());
+    this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    Draw.drawPlayer(this.ctx);
+    this.stepLeftSquares();
+    this.stepRightSquares();
   }
 
   stepLeftSquares() {

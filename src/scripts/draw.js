@@ -5,6 +5,8 @@ const Draw = {
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
+    ctx.lineJoin = "round";
+    ctx.fillStyle = "#000";
     ctx.moveTo(x, y);
     ctx.lineTo(x, y + size);
     ctx.lineTo(x + size, y + size);
@@ -19,7 +21,6 @@ const Draw = {
     ctx.lineTo(x, y + size);
     ctx.lineTo(x, y);
     ctx.lineTo(x - offset, y - offset);
-    ctx.fillStyle = "#000";
     ctx.fill();
     ctx.stroke();
   },
@@ -28,6 +29,8 @@ const Draw = {
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
+    ctx.lineJoin = "round";
+    ctx.fillStyle = "#000";
     ctx.moveTo(x, y);
     ctx.lineTo(x, y + size);
     ctx.lineTo(x + size, y + size);
@@ -41,7 +44,6 @@ const Draw = {
     ctx.lineTo(x + size, y + size);
     ctx.lineTo(x + size, y);
     ctx.lineTo(x + size + offset, y - offset);
-    ctx.fillStyle = "#000";
     ctx.fill();
     ctx.stroke();
   },
@@ -52,6 +54,8 @@ const Draw = {
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
+    ctx.fillStyle = "#84e0e9";
+    ctx.lineJoin = "round";
     ctx.moveTo(x, y);
     ctx.lineTo(x + 40, y + 100);
     ctx.lineTo(x, y + 70);
@@ -59,9 +63,12 @@ const Draw = {
     ctx.lineTo(x, y);
     ctx.closePath();
     ctx.stroke();
-    ctx.fillStyle = "#84e0e9";
     ctx.fill();
   },
+
+  drawField: ctx => {
+
+  }
 };
 
 module.exports = Draw;
