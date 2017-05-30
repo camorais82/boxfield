@@ -5,13 +5,13 @@ const Draw = require("./draw");
 const DEFAULT_LEFT_SQUARES = [
   {
     x: 300,
-    y: 100,
-    size: 100,
-    offset: 10,
-    xGrow: -4,
-    yGrow: 5,
-    sizeGrow: 3,
-    offsetGrow: 0.5,
+    y: 50,
+    size: 30,
+    offset: 5,
+    xGrow: 4,
+    yGrow: 1.02,
+    sizeGrow: 1.025,
+    offsetGrow: 1.025,
   },
 ];
 
@@ -20,11 +20,11 @@ const DEFAULT_RIGHT_SQUARES = [
     x: 800,
     y: 50,
     size: 30,
-    offset: 1,
+    offset: 5,
     xGrow: 4,
-    yGrow: 5,
-    sizeGrow: 3,
-    offsetGrow: 0.5,
+    yGrow: 1.02,
+    sizeGrow: 1.025,
+    offsetGrow: 1.025,
   },
 ];
 
@@ -35,11 +35,18 @@ class Obstacle {
     this.rightSquares = [merge({}, DEFAULT_RIGHT_SQUARES[0])];
   }
 
-  moveSquare(square) {
+  moveRightSquare(square) {
     square.x = square.x + square.xGrow;
-    square.y = square.y + square.yGrow;
-    square.size = square.size + square.sizeGrow;
-    square.offset = square.offset + square.offsetGrow;
+    square.y = square.y * square.yGrow;
+    square.size = square.size * square.sizeGrow;
+    square.offset = square.offset * square.offsetGrow;
+  }
+
+  moveLeftSquare(square) {
+    square.x = square.x - square.xGrow;
+    square.y = square.y * square.yGrow;
+    square.size = square.size * square.sizeGrow;
+    square.offset = square.offset * square.offsetGrow;
   }
 
   animate() {
@@ -53,7 +60,7 @@ class Obstacle {
   stepLeftSquares() {
     this.leftSquares.forEach((square, idx) => {
       Draw.drawLeftSquare(this.ctx, square);
-      this.moveSquare(square);
+      this.moveLeftSquare(square);
       if (square.size > 300) {
         this.leftSquares[idx] = merge({}, DEFAULT_LEFT_SQUARES[idx]);
       }
@@ -63,7 +70,7 @@ class Obstacle {
   stepRightSquares() {
     this.rightSquares.forEach((square, idx) => {
       Draw.drawRightSquare(this.ctx, square);
-      this.moveSquare(square);
+      this.moveRightSquare(square);
       if (square.size > 300) {
         this.rightSquares[idx] = merge({}, DEFAULT_RIGHT_SQUARES[idx]);
       }
