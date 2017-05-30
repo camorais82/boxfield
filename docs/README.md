@@ -11,7 +11,7 @@ Main functionalities for Boxfield are:
 - Game is over when the player hits an obstacle
 - Game keeps track of the player's score
 
-### Architecture
+### Architecture and Technologies
 Boxfield will be seperated out into a few files.
 
 - `boxfield.js` will be the entry file for the game
@@ -23,6 +23,11 @@ Boxfield will be seperated out into a few files.
 - `Obstacle.js` inherits from MovingObject
 - `Player.js` inherits from MovingObject
 - `util.js` contains helper methods
+
+The project will be implemented with the following technologies:
+- Vanilla JS to handle game logic
+- HTML5 Canvas to render the game onto the DOM
+- Webpack to keep bundle up files together into a main file which will be served in `index.html`
 
 ### Wireframes
 <img src="https://raw.githubusercontent.com/jinchen93/boxfield/master/docs/boxfield-wireframe.png?token=APTthjTj506aIk42vULJNQZ3-ry76UHuks5ZNGpCwA%3D%3D">
