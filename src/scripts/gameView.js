@@ -3,14 +3,15 @@ const Utils = require("./utils");
 
 class GameView {
   constructor({ fieldCtx, objCtx }) {
+    this.gameStart = false;
     this.fieldCtx = fieldCtx;
     this.objCtx = objCtx;
     this.game = new Game();
+    this.bindKeyHandlers();
   }
 
   start() {
-    this.animate();
-    this.bindKeyHandlers();
+    this.gameStart = !this.gameStart;
   }
 
   animate() {
@@ -18,9 +19,12 @@ class GameView {
     window.requestAnimationFrame(() => this.animate());
     this.clearCanvas();
 
-    this.animateObstacles();
+    if (this.gameStart) {
+      game.incrementScore();
+      this.animateObstacles();
+      game.player.animate(this.objCtx);
+    }
     game.field.animate(this.fieldCtx);
-    game.player.animate(this.objCtx);
   }
 
   clearCanvas() {
@@ -43,6 +47,9 @@ class GameView {
       }
       if (e.key === "d") {
         this.game.moveRight();
+      }
+      if (e.key === " ") {
+        this.start();
       }
     });
   }

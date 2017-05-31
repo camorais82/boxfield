@@ -8,6 +8,7 @@ class Game {
     this.obstacles = this.populateObstacles();
     this.field = new Field();
     this.player = new Player();
+    this.score = 0;
   }
 
   populateObstacles() {
@@ -24,6 +25,10 @@ class Game {
 
   moveRight() {
     this.obstacles.forEach(obstacle => obstacle.moveRight());
+  }
+
+  incrementScore() {
+    this.score++;
   }
 }
 

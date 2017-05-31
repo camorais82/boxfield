@@ -77,7 +77,6 @@ const Draw = {
 
     ctx.beginPath();
     ctx.lineWidth = 1;
-    // ctx.strokeStyle = "#24585D";
     ctx.strokeStyle = "#f4f4f4";
     ctx.lineJoin = "round";
     levels.forEach(level => Draw.drawFieldLine(ctx, level));

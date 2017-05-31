@@ -18,5 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
     objCtx,
   });
 
-  gameView.start();
+  gameView.animate();
 });

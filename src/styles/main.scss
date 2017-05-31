@@ -18,6 +18,16 @@ header {
   z-index: 3;
 }
 
+.score {
+  font-size: 1.2em;
+  align-items: baseline;
+  letter-spacing: 2px;
+  font-family: 'Bungee Inline', cursive;
+  justify-content: flex-start;
+  left: 2%;
+  top: 50px;
+}
+
 canvas {
   position: absolute;
   top: 0;
