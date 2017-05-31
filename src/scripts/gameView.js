@@ -2,12 +2,13 @@ const Game = require("./game");
 const Utils = require("./utils");
 
 class GameView {
-  constructor({ fieldCtx, objCtx }) {
+  constructor({ fieldCtx, objCtx, scoreEle }) {
     this.gameStart = false;
     this.fieldCtx = fieldCtx;
     this.objCtx = objCtx;
     this.game = new Game();
     this.bindKeyHandlers();
+    this.scoreEle = scoreEle;
   }
 
   start() {
@@ -18,6 +19,7 @@ class GameView {
     const { game } = this;
     window.requestAnimationFrame(() => this.animate());
     this.clearCanvas();
+    this.renderScore();
 
     if (this.gameStart) {
       game.incrementScore();
@@ -30,6 +32,10 @@ class GameView {
   clearCanvas() {
     this.fieldCtx.clearRect(0, 0, Utils.width, Utils.height);
     this.objCtx.clearRect(0, 0, Utils.width, Utils.height);
+  }
+
+  renderScore() {
+    this.scoreEle.innerHTML = `Score: ${this.game.score}`;
   }
 
   animateObstacles() {

@@ -13,9 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
   objCanvas.height = Utils.height;
   const objCtx = objCanvas.getContext("2d");
 
+  const scoreEle = document.querySelector(".score");
+
   const gameView = new GameView({
     fieldCtx,
     objCtx,
+    scoreEle,
   });
 
   gameView.animate();
