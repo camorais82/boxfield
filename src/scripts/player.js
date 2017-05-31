@@ -1,7 +1,31 @@
 const Draw = require("./draw");
+const Utils = require("./utils");
 
 class Player {
-  constructor(ctx) {
-    this.ctx = ctx;
+  constructor() {
+    this.positions = this.setupPositions();
+  }
+
+  setupPositions() {
+    const x = Utils.width / 2;
+    const y = Utils.height * 0.85;
+    const splitHeight = Utils.height / 15;
+    const width = Utils.width / 30;
+    const height = Utils.height / 12;
+
+    return {
+      origin: [x, y],
+      points: [
+        [x + width, y + height],
+        [x, y + splitHeight],
+        [x - width, y + height],
+      ],
+    };
+  }
+
+  animate(ctx) {
+    Draw.drawPlayer(ctx, this.positions);
   }
 }
+
+module.exports = Player;

@@ -1,20 +1,15 @@
 const Draw = require("./draw");
-const Utils = require("./utils")
+const Utils = require("./utils");
 
 class Field {
-  constructor(ctx) {
-    this.ctx = ctx;
+  constructor() {
     this.offset = 0;
   }
 
-  animate() {
-    window.requestAnimationFrame(() => this.animate());
-
-
-    this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    Draw.drawField(this.ctx, this.offset);
-    this.offset += 1;
-    if (this.offset > 7) {
+  animate(ctx) {
+    Draw.drawField(ctx, this.offset);
+    this.offset += Utils.height / 850;
+    if (this.offset > Utils.height / 100) {
       this.offset = 0;
     }
   }
