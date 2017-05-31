@@ -3,49 +3,34 @@ const Utils = require("./utils");
 // Helper that contains all actual canvas drawing methods
 // Keeps classes free of drawing clutter
 const Draw = {
-  drawLeftSquare: (ctx, { x, y, size, offset }) => {
+  drawSquare: (ctx, { front, top, side }) => {
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
     ctx.lineJoin = "round";
     ctx.fillStyle = "#fff";
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y + size);
-    ctx.lineTo(x + size, y + size);
-    ctx.lineTo(x + size, y);
-    ctx.lineTo(x, y);
-    ctx.lineTo(x - offset, y - offset);
-    ctx.lineTo(x - offset, y - offset);
-    ctx.lineTo(x - offset + size, y - offset);
-    ctx.lineTo(x + size, y);
-    ctx.moveTo(x - offset, y - offset);
-    ctx.lineTo(x - offset, y - offset + size);
-    ctx.lineTo(x, y + size);
-    ctx.lineTo(x, y);
-    ctx.lineTo(x - offset, y - offset);
-    ctx.fill();
-    ctx.stroke();
-  },
 
-  drawRightSquare: (ctx, { x, y, size, offset }) => {
-    ctx.beginPath();
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "#84e0e9";
-    ctx.lineJoin = "round";
-    ctx.fillStyle = "#fff";
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y + size);
-    ctx.lineTo(x + size, y + size);
-    ctx.lineTo(x + size, y);
-    ctx.lineTo(x, y);
-    ctx.lineTo(x + offset, y - offset);
-    ctx.lineTo(x + offset + size, y - offset);
-    ctx.lineTo(x + size, y);
-    ctx.moveTo(x + offset + size, y - offset);
-    ctx.lineTo(x + offset + size, y + size - offset);
-    ctx.lineTo(x + size, y + size);
-    ctx.lineTo(x + size, y);
-    ctx.lineTo(x + size + offset, y - offset);
+    // Draw front face
+    ctx.moveTo(...front[0]);
+    ctx.lineTo(...front[1]);
+    ctx.lineTo(...front[2]);
+    ctx.lineTo(...front[3]);
+    ctx.closePath();
+
+    // Draw top face
+    ctx.moveTo(...top[0]);
+    ctx.lineTo(...top[1]);
+    ctx.lineTo(...top[2]);
+    ctx.lineTo(...top[3]);
+    ctx.closePath();
+
+    // Draw side face
+    ctx.moveTo(...side[0]);
+    ctx.lineTo(...side[1]);
+    ctx.lineTo(...side[2]);
+    ctx.lineTo(...side[3]);
+    ctx.closePath();
+
     ctx.fill();
     ctx.stroke();
   },
