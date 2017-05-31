@@ -6,7 +6,7 @@ const Draw = {
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
     ctx.lineJoin = "round";
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "#fff";
     ctx.moveTo(x, y);
     ctx.lineTo(x, y + size);
     ctx.lineTo(x + size, y + size);
@@ -30,7 +30,7 @@ const Draw = {
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
     ctx.lineJoin = "round";
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "#fff";
     ctx.moveTo(x, y);
     ctx.lineTo(x, y + size);
     ctx.lineTo(x + size, y + size);
@@ -48,26 +48,22 @@ const Draw = {
     ctx.stroke();
   },
 
-  drawPlayer: ctx => {
-    const x = Utils.width / 2;
-    const y = Utils.height - 150;
+  drawPlayer: (ctx, player) => {
     ctx.beginPath();
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#84e0e9";
     ctx.fillStyle = "#84e0e9";
     ctx.lineJoin = "round";
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + 40, y + 100);
-    ctx.lineTo(x, y + 70);
-    ctx.lineTo(x - 40, y + 100);
-    ctx.lineTo(x, y);
+    ctx.moveTo(...player.origin);
+    player.points.forEach(xyPair => ctx.lineTo(...xyPair));
+    ctx.lineTo(...player.origin);
     ctx.closePath();
     ctx.stroke();
     ctx.fill();
   },
 
   drawField: (ctx, offset) => {
-    const levels  = [];
+    const levels = [];
     let multiplier = 1.1;
 
     let baseLevel = Utils.height / 10 + offset;
@@ -81,16 +77,17 @@ const Draw = {
 
     ctx.beginPath();
     ctx.lineWidth = 1;
-    ctx.strokeStyle = "#24585D";
+    // ctx.strokeStyle = "#24585D";
+    ctx.strokeStyle = "#f4f4f4";
     ctx.lineJoin = "round";
-    levels.forEach( level => Draw.drawFieldLine(ctx, level));
+    levels.forEach(level => Draw.drawFieldLine(ctx, level));
     ctx.stroke();
   },
 
   drawFieldLine: (ctx, y) => {
     ctx.moveTo(0, y);
     ctx.lineTo(Utils.width, y);
-  }
+  },
 };
 
 module.exports = Draw;
