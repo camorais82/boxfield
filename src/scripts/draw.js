@@ -1,5 +1,7 @@
 const Utils = require("./utils");
 
+// Helper that contains all actual canvas drawing methods
+// Keeps classes free of drawing clutter
 const Draw = {
   drawLeftSquare: (ctx, { x, y, size, offset }) => {
     ctx.beginPath();

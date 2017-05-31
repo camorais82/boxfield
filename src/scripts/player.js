@@ -1,6 +1,7 @@
 const Draw = require("./draw");
 const Utils = require("./utils");
 
+// Contains the properties of the player (position, direction, etc)
 class Player {
   constructor() {
     this.positions = this.setupPositions();

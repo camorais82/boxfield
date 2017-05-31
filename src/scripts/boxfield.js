@@ -2,6 +2,8 @@ require("../styles/main.scss");
 const Utils = require("./utils");
 const GameView = require("./gameView");
 
+// Basic initialization + grabbing DOM elements to feed into
+// the gameView instance
 document.addEventListener("DOMContentLoaded", () => {
   const fieldCanvas = document.getElementById("field");
   fieldCanvas.width = Utils.width;

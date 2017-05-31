@@ -1,6 +1,7 @@
 const Draw = require("./draw");
 const Utils = require("./utils");
 
+// Animates the moving field
 class Field {
   constructor() {
     this.offset = 0;

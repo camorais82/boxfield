@@ -2,6 +2,7 @@ const { merge } = require("lodash");
 const Utils = require("./utils");
 const Draw = require("./draw");
 
+// Contains default properties and methods to grow / reset the obstacle
 class Obstacle {
   constructor() {
     this.properties = this.generateProperties();

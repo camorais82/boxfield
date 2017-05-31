@@ -3,6 +3,7 @@ const Obstacle = require("./obstacle");
 const Player = require("./player");
 const Utils = require("./utils");
 
+// Handles top level game logic
 class Game {
   constructor() {
     this.obstacles = this.populateObstacles();

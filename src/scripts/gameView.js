@@ -1,6 +1,7 @@
 const Game = require("./game");
 const Utils = require("./utils");
 
+// Renders the game logic out onto the screen
 class GameView {
   constructor({ fieldCtx, objCtx, scoreEle }) {
     this.gameStart = false;
