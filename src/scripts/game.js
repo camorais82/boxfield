@@ -12,6 +12,16 @@ class Game {
     this.score = 0;
   }
 
+  detectCollision() {
+    const { obstacles } = this;
+    for (let i = 0; i < obstacles.length - 1; i++) {
+      if (this.player.isCollideWith(obstacles[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   populateObstacles() {
     const obstacles = [];
     for (let i = 0; i < 20; i++) {

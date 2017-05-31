@@ -9,7 +9,7 @@ class Field {
 
   animate(ctx) {
     Draw.drawField(ctx, this.offset);
-    this.offset += Utils.height / 850;
+    this.offset += Utils.height / 875;
     if (this.offset > Utils.height / 100) {
       this.offset = 0;
     }

@@ -41,9 +41,8 @@ const Draw = {
     ctx.strokeStyle = "#84e0e9";
     ctx.fillStyle = "#84e0e9";
     ctx.lineJoin = "round";
-    ctx.moveTo(...player.origin);
-    player.points.forEach(xyPair => ctx.lineTo(...xyPair));
-    ctx.lineTo(...player.origin);
+    ctx.moveTo(...player.points.all[0]);
+    player.points.all.forEach(xyPair => ctx.lineTo(...xyPair));
     ctx.closePath();
     ctx.stroke();
     ctx.fill();

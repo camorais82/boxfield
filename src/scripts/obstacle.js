@@ -1,10 +1,12 @@
 const { merge } = require("lodash");
+const Piece = require("./piece");
 const Utils = require("./utils");
 const Draw = require("./draw");
 
 // Contains default properties and methods to grow / reset the obstacle
-class Obstacle {
+class Obstacle extends Piece {
   constructor() {
+    super();
     this.resetSquare();
   }
 
@@ -50,7 +52,7 @@ class Obstacle {
   }
 
   generateLeftPoints() {
-    const { x, y, size, offset } = this.properties;
+    const { x, y, size, offset, points } = this.properties;
     this.properties.points = {
       front: [[x, y], [x, y + size], [x + size, y + size], [x + size, y]],
       top: [
@@ -66,6 +68,7 @@ class Obstacle {
         [x, y],
       ],
     };
+    this.mergeAllPoints();
   }
 
   generateRightPoints() {
@@ -85,6 +88,13 @@ class Obstacle {
         [x + size, y],
       ],
     };
+    this.mergeAllPoints();
+  }
+
+  mergeAllPoints() {
+    this.properties.points.all = this.properties.points.front
+      .concat(this.properties.points.top)
+      .concat(this.properties.points.side);
   }
 
   move() {

@@ -18,6 +18,7 @@ class GameView {
 
   animate() {
     const { game } = this;
+    game.detectCollision();
     window.requestAnimationFrame(() => this.animate());
     this.clearCanvas();
     this.renderScore();

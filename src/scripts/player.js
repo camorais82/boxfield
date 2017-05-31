@@ -1,9 +1,11 @@
+const Piece = require("./piece");
 const Draw = require("./draw");
 const Utils = require("./utils");
 
 // Contains the properties of the player (position, direction, etc)
-class Player {
+class Player extends Piece {
   constructor() {
+    super();
     this.properties = this.setupPositions();
   }
 
@@ -15,12 +17,14 @@ class Player {
     const height = Utils.height / 12;
 
     return {
-      origin: [x, y],
-      points: [
-        [x + width, y + height],
-        [x, y + splitHeight],
-        [x - width, y + height],
-      ],
+      points: {
+        all: [
+          [x, y],
+          [x + width, y + height],
+          [x, y + splitHeight],
+          [x - width, y + height],
+        ],
+      },
     };
   }
 
