@@ -1,6 +1,5 @@
 const Game = require("./game");
 const Utils = require("./utils");
-const key = require("../vendors/keymaster");
 
 class GameView {
   constructor({ fieldCtx, objCtx }) {
@@ -38,8 +37,14 @@ class GameView {
   }
 
   bindKeyHandlers() {
-    key("a", () => this.game.moveLeft());
-    key("d", () => this.game.moveRight());
+    document.addEventListener("keydown", e => {
+      if (e.key === "a") {
+        this.game.moveLeft();
+      }
+      if (e.key === "d") {
+        this.game.moveRight();
+      }
+    });
   }
 }
 
