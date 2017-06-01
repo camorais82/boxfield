@@ -137,9 +137,9 @@ class Obstacle extends Piece {
     const { properties } = this;
     if (properties.spawnOffset <= 0) {
       if (properties.type === "LEFT") {
-        properties.x = properties.x - properties.xGrow * 10;
+        properties.x = properties.x - properties.xGrow * 8;
       } else {
-        properties.x = properties.x + properties.xGrow * 10;
+        properties.x = properties.x + properties.xGrow * 8;
       }
     }
   }
@@ -148,16 +148,16 @@ class Obstacle extends Piece {
     const { properties } = this;
     if (properties.spawnOffset <= 0) {
       if (properties.type === "LEFT") {
-        properties.x = properties.x + properties.xGrow * 10;
+        properties.x = properties.x + properties.xGrow * 8;
       } else {
-        properties.x = properties.x - properties.xGrow * 10;
+        properties.x = properties.x - properties.xGrow * 8;
       }
     }
   }
 
   generateLeftHallway(pos) {
     const defaults = this.generateDefault();
-    const x = pos - Utils.width / 30;
+    const x = pos - Utils.width / 25;
     const properties = merge(defaults, {
       x,
       offset: -3,
@@ -170,7 +170,7 @@ class Obstacle extends Piece {
 
   generateRightHallway(pos) {
     const defaults = this.generateDefault();
-    const x = pos + Utils.width / 30;
+    const x = pos + Utils.width / 25;
     const properties = merge(defaults, {
       x,
       offset: 3,

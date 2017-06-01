@@ -70,7 +70,7 @@ class Game {
       }
       this.endGame();
     }
-    if (this.score % 800 === 0 || this.score < 10) {
+    if (this.score % 1000 === 0 || this.score < 10) {
       this.initiateHallway = true;
       this.stopObstacleSpawn();
     }
@@ -82,7 +82,7 @@ class Game {
   generateHallway() {
     if (this.isFieldClear()) {
       const pos = Math.random() * Utils.width;
-      this.obstacles = this.populateObstacles(50);
+      this.obstacles = this.populateObstacles(70);
       this.generateLeftHallwayPieces(pos);
       this.generateRightHallwayPieces(pos);
     }
@@ -90,8 +90,14 @@ class Game {
 
   generateLeftHallwayPieces(pos) {
     let spawnIncrement = 5;
+    let xIncrement = 0;
     for (let i = 0; i < this.obstacles.length / 2; i++) {
-      this.obstacles[i].generateLeftHallway(pos);
+      if (i < 16) {
+        this.obstacles[i].generateLeftHallway(xIncrement);
+        xIncrement += pos / 16;
+      } else {
+        this.obstacles[i].generateLeftHallway(pos);
+      }
       this.obstacles[i].properties.spawnOffset = spawnIncrement;
       spawnIncrement += 5;
     }
@@ -99,8 +105,14 @@ class Game {
 
   generateRightHallwayPieces(pos) {
     let spawnIncrement = 5;
+    let xIncrement = Utils.width;
     for (let i = this.obstacles.length / 2; i < this.obstacles.length; i++) {
-      this.obstacles[i].generateRightHallway(pos);
+      if (i < this.obstacles.length / 2 + 16) {
+        this.obstacles[i].generateRightHallway(xIncrement);
+        xIncrement -= (Utils.width - pos) / 16;
+      } else {
+        this.obstacles[i].generateRightHallway(pos);
+      }
       this.obstacles[i].properties.spawnOffset = spawnIncrement;
       spawnIncrement += 5;
     }
