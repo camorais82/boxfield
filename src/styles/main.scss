@@ -4,7 +4,7 @@ html, body {
   overflow: hidden;
 }
 
-header {
+.title {
   position: fixed;
   top: 2%;
   width: 100%;
@@ -19,7 +19,14 @@ header {
 }
 
 .score {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 3;
+  color: #84e0e9;
   font-size: 1.2em;
+  width: 100%;
+  font-weight: 100;
   align-items: baseline;
   letter-spacing: 2px;
   font-family: 'Bungee Inline', cursive;
@@ -41,4 +48,72 @@ canvas {
 
 #objects {
   z-index: 2;
+}
+
+.info {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  top: 15%;
+  left: 25%;
+  z-index: 10;
+  height: 70%;
+  width: 50%;
+  text-align: center;
+  font-family: "Play";
+  font-size: 1.4em;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid #38AEB9;
+  color: #38AEB9;
+  border-radius: 10px;
+
+  .controls-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 70%;
+    .controls-header {
+      box-sizing: border-box;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #38AEB9;
+      width: 100%;
+    }
+    .key {
+      margin: 5px 0;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+      height: 20px;
+      border: 2px solid #e9e9e9;
+      border-radius: 2px;
+      border-width: 1px 1px 3px;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      padding: 3px 5px;
+    }
+
+    .controls {
+      display: flex;
+      font-size: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 75%;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.end-game {
+  box-sizing: border-box;
+  padding: 20px;
+  height: auto;
 }

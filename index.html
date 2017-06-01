@@ -6,12 +6,39 @@
   <script src="./bundle.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Play" rel="stylesheet">
 </head>
 
 <body>
   <header class="title"> BOXFIELD </header>
   <header class="score">Score: </header>
+  <div class="info instructions">
+    Welcome to BOXFIELD
+    <br>
+    <br>Dodge the boxes
+    <br>for as long as possible!
+    <div class="controls-wrapper">
+      <header class="controls-header">
+        Controls:
+      </header>
+      <div class="controls">
+        Start Game
+        <div class="key">Space</div>
+        or
+        <div class="key">Enter</div>
+      </div>
+      <div class="controls">
+        Move Left
+        <div class="key">A</div>
+      </div>
+      <div class="controls">
+        Move Right
+        <div class="key">D</div>
+      </div>
+    </div>
+  </div>
+  <div class="info end-game hidden">
+  </div>
   <canvas id="field"></canvas>
   <canvas id="objects"></canvas>
 </body>

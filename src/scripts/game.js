@@ -6,6 +6,7 @@ const Utils = require("./utils");
 // Handles top level game logic
 class Game {
   constructor() {
+    this.highScore = 0;
     this.newGame();
   }
 
@@ -59,10 +60,13 @@ class Game {
   }
 
   tick() {
+    this.incrementScore();
     if (this.detectCollision()) {
+      if (this.score > this.highScore) {
+        this.highScore = this.score;
+      }
       this.endGame();
     }
-    this.incrementScore();
   }
 }
 

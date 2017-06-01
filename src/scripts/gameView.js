@@ -1,14 +1,17 @@
 const Game = require("./game");
 const Utils = require("./utils");
+const Draw = require("./draw");
 
 // Renders the game logic out onto the screen
 class GameView {
-  constructor({ fieldCtx, objCtx, scoreEle }) {
+  constructor({ fieldCtx, objCtx, scoreEle, instructionEle, endEle }) {
     this.fieldCtx = fieldCtx;
     this.objCtx = objCtx;
     this.game = new Game();
     this.bindKeyHandlers();
     this.scoreEle = scoreEle;
+    this.instructionEle = instructionEle;
+    this.endEle = endEle;
   }
 
   animate() {
@@ -18,13 +21,16 @@ class GameView {
     this.clearCanvas();
     this.renderScore();
 
+    game.field.animate(this.fieldCtx);
     if (game.gameStart) {
       game.tick();
       this.animateObstacles();
       game.player.animate(this.objCtx);
     }
 
-    game.field.animate(this.fieldCtx);
+    if (!game.gameStart && game.highScore) {
+      this.renderEndScreen();
+    }
   }
 
   clearCanvas() {
@@ -34,6 +40,13 @@ class GameView {
 
   renderScore() {
     this.scoreEle.innerHTML = `Score: ${this.game.score}`;
+  }
+
+  renderEndScreen() {
+    this.endEle.className = "info end-game";
+    this.endEle.innerHTML =
+      `Your score is ${this.game.score}` +
+      `<br><br> Your highest score is ${this.game.highScore}`;
   }
 
   animateObstacles() {
@@ -52,7 +65,9 @@ class GameView {
       if (e.key === "d") {
         this.game.moveRight();
       }
-      if (e.key === " ") {
+      if (e.key === " " || e.key === "Enter") {
+        this.instructionEle.className = "hidden";
+        this.endEle.className = "hidden";
         this.game.start();
       }
     });
