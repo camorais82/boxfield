@@ -20,9 +20,11 @@ class Game {
 
   detectCollision() {
     const { obstacles } = this;
-    for (let i = 0; i < obstacles.length - 1; i++) {
-      if (this.player.isCollideWith(obstacles[i])) {
-        return true;
+    for (let i = 0; i < obstacles.length; i++) {
+      if (obstacles[i].properties.y > Utils.height / 3 * 2) {
+        if (this.player.isCollideWith(obstacles[i])) {
+          return true;
+        }
       }
     }
     return false;
