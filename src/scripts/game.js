@@ -6,10 +6,15 @@ const Utils = require("./utils");
 // Handles top level game logic
 class Game {
   constructor() {
+    this.newGame();
+  }
+
+  newGame() {
     this.obstacles = this.populateObstacles();
     this.field = new Field();
     this.player = new Player();
     this.score = 0;
+    this.gameStart = false;
   }
 
   detectCollision() {
@@ -40,6 +45,24 @@ class Game {
 
   incrementScore() {
     this.score++;
+  }
+
+  start() {
+    if (this.score > 0 && !this.gameStart) {
+      this.newGame();
+    }
+    this.gameStart = true;
+  }
+
+  endGame() {
+    this.gameStart = false;
+  }
+
+  tick() {
+    if (this.detectCollision()) {
+      this.endGame();
+    }
+    this.incrementScore();
   }
 }
 

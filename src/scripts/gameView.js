@@ -4,7 +4,6 @@ const Utils = require("./utils");
 // Renders the game logic out onto the screen
 class GameView {
   constructor({ fieldCtx, objCtx, scoreEle }) {
-    this.gameStart = false;
     this.fieldCtx = fieldCtx;
     this.objCtx = objCtx;
     this.game = new Game();
@@ -12,22 +11,19 @@ class GameView {
     this.scoreEle = scoreEle;
   }
 
-  start() {
-    this.gameStart = !this.gameStart;
-  }
-
   animate() {
     const { game } = this;
-    game.detectCollision();
+
     window.requestAnimationFrame(() => this.animate());
     this.clearCanvas();
     this.renderScore();
 
-    if (this.gameStart) {
-      game.incrementScore();
+    if (game.gameStart) {
+      game.tick();
       this.animateObstacles();
       game.player.animate(this.objCtx);
     }
+
     game.field.animate(this.fieldCtx);
   }
 
@@ -57,7 +53,7 @@ class GameView {
         this.game.moveRight();
       }
       if (e.key === " ") {
-        this.start();
+        this.game.start();
       }
     });
   }
