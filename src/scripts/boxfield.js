@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreEle = document.querySelector(".score");
   const instructionEle = document.querySelector(".instructions");
   const endEle = document.querySelector(".end-game");
+
   const gameView = new GameView({
     fieldCtx,
     objCtx,

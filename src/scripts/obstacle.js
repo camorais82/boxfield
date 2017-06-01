@@ -11,6 +11,7 @@ class Obstacle extends Piece {
   }
 
   resetSquare() {
+    this.respawn = true;
     return Math.random() > 0.5 ? this.generateLeft() : this.generateRight();
   }
 
@@ -108,7 +109,7 @@ class Obstacle extends Piece {
         : this.generateRightPoints();
     }
 
-    if (this.properties.size > 300) {
+    if (this.properties.size > 300 && this.respawn) {
       this.resetSquare();
     }
   }
@@ -152,6 +153,32 @@ class Obstacle extends Piece {
         properties.x = properties.x - properties.xGrow * 10;
       }
     }
+  }
+
+  generateLeftHallway(pos) {
+    const defaults = this.generateDefault();
+    const x = pos - Utils.width / 30;
+    const properties = merge(defaults, {
+      x,
+      offset: -3,
+      xGrow: -(Utils.height / Utils.width),
+      type: "LEFT",
+    });
+    this.properties = properties;
+    this.generateLeftPoints();
+  }
+
+  generateRightHallway(pos) {
+    const defaults = this.generateDefault();
+    const x = pos + Utils.width / 30;
+    const properties = merge(defaults, {
+      x,
+      offset: 3,
+      xGrow: Utils.height / Utils.width,
+      type: "RIGHT",
+    });
+    this.properties = properties;
+    this.generateRightPoints();
   }
 }
 

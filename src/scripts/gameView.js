@@ -22,6 +22,7 @@ class GameView {
     this.renderScore();
 
     game.field.animate(this.fieldCtx);
+
     if (game.gameStart) {
       game.tick();
       this.animateObstacles();
@@ -39,7 +40,7 @@ class GameView {
   }
 
   renderScore() {
-    this.scoreEle.innerHTML = `Score: ${this.game.score}`;
+    this.scoreEle.innerHTML = `Score:  ${this.game.score}`;
   }
 
   renderEndScreen() {

@@ -11,11 +11,12 @@ class Game {
   }
 
   newGame() {
-    this.obstacles = this.populateObstacles();
+    this.obstacles = this.populateObstacles(20);
     this.field = new Field();
     this.player = new Player();
     this.score = 0;
     this.gameStart = false;
+    this.initiateHallway = false;
   }
 
   detectCollision() {
@@ -30,9 +31,9 @@ class Game {
     return false;
   }
 
-  populateObstacles() {
+  populateObstacles(n) {
     const obstacles = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < n; i++) {
       obstacles.push(new Obstacle());
     }
     return obstacles;
@@ -69,6 +70,53 @@ class Game {
       }
       this.endGame();
     }
+    if (this.score % 800 === 0 || this.score < 10) {
+      this.initiateHallway = true;
+      this.stopObstacleSpawn();
+    }
+    if (this.initiateHallway) {
+      this.generateHallway();
+    }
+  }
+
+  generateHallway() {
+    if (this.isFieldClear()) {
+      const pos = Math.random() * Utils.width;
+      this.obstacles = this.populateObstacles(50);
+      this.generateLeftHallwayPieces(pos);
+      this.generateRightHallwayPieces(pos);
+    }
+  }
+
+  generateLeftHallwayPieces(pos) {
+    let spawnIncrement = 5;
+    for (let i = 0; i < this.obstacles.length / 2; i++) {
+      this.obstacles[i].generateLeftHallway(pos);
+      this.obstacles[i].properties.spawnOffset = spawnIncrement;
+      spawnIncrement += 5;
+    }
+  }
+
+  generateRightHallwayPieces(pos) {
+    let spawnIncrement = 5;
+    for (let i = this.obstacles.length / 2; i < this.obstacles.length; i++) {
+      this.obstacles[i].generateRightHallway(pos);
+      this.obstacles[i].properties.spawnOffset = spawnIncrement;
+      spawnIncrement += 5;
+    }
+  }
+
+  stopObstacleSpawn() {
+    this.obstacles.forEach(obstacle => (obstacle.respawn = false));
+  }
+
+  isFieldClear() {
+    for (let i = 0; i < this.obstacles.length; i++) {
+      if (this.obstacles[i].properties.size < 300) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 
