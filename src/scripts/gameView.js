@@ -46,7 +46,15 @@ class GameView {
     this.endEle.className = "info end-game";
     this.endEle.innerHTML =
       `Your score is ${this.game.score}` +
-      `<br><br> Your highest score is ${this.game.highScore}`;
+      `<br><br> Your highest score is ${this.game.highScore}` +
+      `<div class="controls">
+        <br>
+        Restart Game
+        <br>
+        <div class="key">Space</div>
+          or
+        <div class="key">Enter</div>
+      </div>`;
   }
 
   animateObstacles() {
