@@ -22,8 +22,8 @@ class Piece {
   allVectors() {
     let vectors = [];
     const { all } = this.properties.points;
-    for (let i = 0; i < all.length - 1; i++) {
-      for (let j = i + 1; j < all.length - 2; j++) {
+    for (let i = 0; i < all.length; i++) {
+      for (let j = i + 1; j < all.length; j++) {
         vectors.push([all[i], all[j]]);
       }
     }
