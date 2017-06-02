@@ -65,8 +65,8 @@ canvas {
   font-family: "Play";
   font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid #38AEB9;
-  color: #38AEB9;
+  border: 1px solid #858585;
+  color: #858585;
   border-radius: 10px;
 
   .controls-wrapper {
@@ -79,7 +79,7 @@ canvas {
     .controls-header {
       box-sizing: border-box;
       padding-bottom: 10px;
-      border-bottom: 1px solid #38AEB9;
+      border-bottom: 1px solid #858585;
       width: 100%;
     }
 
@@ -117,4 +117,14 @@ canvas {
   box-sizing: border-box;
   padding: 20px;
   height: auto;
+}
+
+.green-text {
+  display: inline;
+  color: #88F295;
+}
+
+.blue-text {
+  display: inline;
+  color: #84e0e9;
 }

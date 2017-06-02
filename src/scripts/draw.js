@@ -3,10 +3,10 @@ const Utils = require("./utils");
 // Helper that contains all actual canvas drawing methods
 // Keeps classes free of drawing clutter
 const Draw = {
-  drawSquare: (ctx, { front, top, side }) => {
+  drawSquare: (ctx, { front, top, side }, bonus) => {
     ctx.beginPath();
     ctx.lineWidth = 2;
-    ctx.strokeStyle = "#84e0e9";
+    ctx.strokeStyle = bonus ? "#88F295" : "#84e0e9";
     ctx.lineJoin = "round";
     ctx.fillStyle = "#fff";
 

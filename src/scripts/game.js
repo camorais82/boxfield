@@ -24,17 +24,28 @@ class Game {
     for (let i = 0; i < obstacles.length; i++) {
       if (obstacles[i].properties.y > Utils.height / 3 * 2) {
         if (this.player.isCollideWith(obstacles[i])) {
-          return true;
+          if (obstacles[i].bonus) {
+            obstacles[i].properties.y = 0;
+            obstacles[i].properties.spawnOffset = 99999;
+            obstacles[i].properties.size = 1000;
+            this.score = this.score + 1000;
+          } else {
+            return true;
+          }
         }
       }
     }
     return false;
   }
 
-  populateObstacles(n) {
+  populateObstacles(n, hasBonus = true) {
     const obstacles = [];
     for (let i = 0; i < n; i++) {
-      obstacles.push(new Obstacle());
+      const obstacle = new Obstacle();
+      if (!hasBonus) {
+        obstacle.bonus = false;
+      }
+      obstacles.push(obstacle);
     }
     return obstacles;
   }
@@ -82,7 +93,7 @@ class Game {
   generateHallway() {
     if (this.isFieldClear()) {
       const pos = Math.random() * Utils.width;
-      this.obstacles = this.populateObstacles(70);
+      this.obstacles = this.populateObstacles(70, false);
       this.generateLeftHallwayPieces(pos);
       this.generateRightHallwayPieces(pos);
     }

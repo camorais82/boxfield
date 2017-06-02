@@ -12,6 +12,11 @@ class Obstacle extends Piece {
 
   resetSquare() {
     this.respawn = true;
+    if (Math.random() > 0.8) {
+      this.bonus = true;
+    } else {
+      this.bonus = false;
+    }
     return Math.random() > 0.5 ? this.generateLeft() : this.generateRight();
   }
 
@@ -129,7 +134,7 @@ class Obstacle extends Piece {
 
   draw(ctx) {
     if (this.properties.spawnOffset <= 0) {
-      Draw.drawSquare(ctx, this.properties.points);
+      Draw.drawSquare(ctx, this.properties.points, this.bonus);
     }
   }
 
