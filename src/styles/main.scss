@@ -158,8 +158,10 @@ canvas {
   a {
     font-size: 1.4em;
     text-decoration: none;
+    transition: all 100ms;
     color: #858585;
     &:hover {
+      transition: all 100ms;
       color: #454545;
     }
   }
