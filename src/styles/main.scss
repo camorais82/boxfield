@@ -35,6 +35,25 @@ html, body {
   top: 50px;
 }
 
+.score-feedback {
+  position: fixed;
+  top: 20%;
+  color: #88F295;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 1.4em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.score-feedback-hidden {
+  color: #88F295;
+  opacity: 0;
+}
+
 canvas {
   position: absolute;
   top: 0;

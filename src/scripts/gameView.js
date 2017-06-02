@@ -4,10 +4,17 @@ const Draw = require("./draw");
 
 // Renders the game logic out onto the screen
 class GameView {
-  constructor({ fieldCtx, objCtx, scoreEle, instructionEle, endEle }) {
+  constructor({
+    fieldCtx,
+    objCtx,
+    scoreEle,
+    instructionEle,
+    endEle,
+    scoreFeedbackEle,
+  }) {
     this.fieldCtx = fieldCtx;
     this.objCtx = objCtx;
-    this.game = new Game();
+    this.game = new Game(scoreFeedbackEle);
     this.bindKeyHandlers();
     this.scoreEle = scoreEle;
     this.instructionEle = instructionEle;

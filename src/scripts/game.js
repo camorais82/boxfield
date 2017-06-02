@@ -5,7 +5,8 @@ const Utils = require("./utils");
 
 // Handles top level game logic
 class Game {
-  constructor() {
+  constructor(scoreFeedbackEle) {
+    this.scoreFeedbackEle = scoreFeedbackEle;
     this.highScore = 0;
     this.newGame();
   }
@@ -25,10 +26,13 @@ class Game {
       if (obstacles[i].properties.y > Utils.height / 3 * 2) {
         if (this.player.isCollideWith(obstacles[i])) {
           if (obstacles[i].bonus) {
-            obstacles[i].properties.y = 0;
-            obstacles[i].properties.spawnOffset = 99999;
-            obstacles[i].properties.size = 1000;
+            this.removeObstacle(i);
+            this.scoreFeedbackEle.className = "score-feedback";
             this.score = this.score + 1000;
+            setTimeout(
+              () => (this.scoreFeedbackEle.className = "score-feedback-hidden"),
+              500
+            );
           } else {
             return true;
           }
@@ -36,6 +40,12 @@ class Game {
       }
     }
     return false;
+  }
+
+  removeObstacle(idx) {
+    this.obstacles[idx].properties.y = 0;
+    this.obstacles[idx].properties.spawnOffset = 99999;
+    this.obstacles[idx].properties.size = 1000;
   }
 
   populateObstacles(n, hasBonus = true) {

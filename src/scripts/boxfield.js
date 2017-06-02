@@ -19,12 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const instructionEle = document.querySelector(".instructions");
   const endEle = document.querySelector(".end-game");
 
+  const scoreFeedbackEle = document.querySelector(".score-feedback-hidden");
+
   const gameView = new GameView({
     fieldCtx,
     objCtx,
     scoreEle,
     instructionEle,
     endEle,
+    scoreFeedbackEle,
   });
 
   gameView.animate();
