@@ -13,7 +13,7 @@ class Player extends Piece {
     const x = Utils.width / 2;
     const y = Utils.height * 0.85;
     const splitHeight = Utils.height / 15;
-    const width = Utils.width / 30;
+    const width = Utils.width / 50;
     const height = Utils.height / 12;
 
     return {
