@@ -147,3 +147,20 @@ canvas {
   display: inline;
   color: #84e0e9;
 }
+
+.promotional {
+  position: fixed;
+  z-index: 100;
+  top: 1%;
+  right: 2%;
+  color: #858585;
+
+  a {
+    font-size: 1.4em;
+    text-decoration: none;
+    color: #858585;
+    &:hover {
+      color: #454545;
+    }
+  }
+}
