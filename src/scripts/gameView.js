@@ -47,7 +47,7 @@ class GameView {
   }
 
   renderScore() {
-    this.scoreEle.innerHTML = `Score:  ${this.game.score}`;
+    this.scoreEle.innerHTML = `Score: &nbsp; ${this.game.score}`;
   }
 
   renderEndScreen() {
