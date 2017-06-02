@@ -162,7 +162,7 @@ class Obstacle extends Piece {
 
   generateLeftHallway(pos) {
     const defaults = this.generateDefault();
-    const x = pos - Utils.width / 30;
+    const x = pos - Utils.width / 15;
     const properties = merge(defaults, {
       x,
       offset: -3,
@@ -175,7 +175,7 @@ class Obstacle extends Piece {
 
   generateRightHallway(pos) {
     const defaults = this.generateDefault();
-    const x = pos + Utils.width / 30;
+    const x = pos + Utils.width / 15;
     const properties = merge(defaults, {
       x,
       offset: 3,

@@ -52,10 +52,10 @@ const Draw = {
     const levels = [];
     let multiplier = 1.1;
 
-    let baseLevel = Utils.height / 10 + offset;
+    let baseLevel = Utils.height / 10;
+    levels.push(baseLevel);
 
-    levels.push(baseLevel - offset);
-
+    baseLevel += offset;
     for (let i = 1; i < 28; i++) {
       levels.push(baseLevel);
       baseLevel = baseLevel * multiplier;
