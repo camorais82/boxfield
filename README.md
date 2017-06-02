@@ -3,6 +3,7 @@
 
 Boxfield is an HTML5 twist on the popular Flash game Cubefield.
 The main objective of the game is to avoid the blue boxes. Players can also score points faster by eating green boxes which are worth 1000 points.
+<img src="https://raw.githubusercontent.com/jinchen93/boxfield/master/docs/game-screenshot.png" />
 
 ## Features and Implementation
 ### Obstacles
